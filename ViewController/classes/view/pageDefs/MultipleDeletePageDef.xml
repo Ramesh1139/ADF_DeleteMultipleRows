@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.22.48" id="MultipleDeletePageDef"
+                Package="view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="EngStudentVOView1" RangeSize="25" DataControl="AppModuleDataControl"
+              id="EngStudentVOView1Iterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="EngStudentVOView1Iterator" id="EngStudentVOView1">
+      <nodeDefinition DefName="model.EngStudentVOView" Name="EngStudentVOView10">
+        <AttrNames>
+          <Item Value="StudentId"/>
+          <Item Value="StudentName"/>
+          <Item Value="StudentClass"/>
+          <Item Value="SelectRow" Binds="SelectRow"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <button IterBinding="EngStudentVOView1Iterator" id="SelectRow" DTSupportsMRU="false" StaticList="true">
+      <AttrNames>
+        <Item Value="SelectRow"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="Y"/>
+        <Item Value="N"/>
+      </ValueList>
+    </button>
+    <action id="Commit" DataControl="AppModuleDataControl" RequiresUpdateModel="true" Action="commitTransaction"/>
+  </bindings>
+</pageDefinition>
